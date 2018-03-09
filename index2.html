@@ -20,22 +20,52 @@
 			<ul>
 				<li class="current"><a  href="index2.html">Home</a></li>
 				<li><a  href="index3.html">About</a></li>
-				<li><a  href="index4.html">Services</a></li>
-				<li><a  href="#">Contact</a></li>
+				<li><a  href="login.html">Login</a></li>
 			</ul>
 		
 	</nav>
 	</div>
 	</header>
 
+	<div class="wrap">
+		<div id="arrow-left" class="arrow"></div>
+		<div id="slider">
+			<div class="slide slide1">
+			
+				<div class="slide-content">
+					<span>Good food choices are good investments.</span>
+				</div>
+			</div>
+			<div class="slide slide2">
+				
+					<div class="slide-content">
+						<span>Food is an important part of a balanced diet.</span>
+					</div>
+				</div>
+			<div class="slide slide3">	
+				<div class="slide-content">
+					<span>People who love to eat are always the best people.</span>
+				</div>
+			</div>
+			<div class="slide slide4">
+			
+					<div class="slide-content">
+						<span>Laughter is brightest in the place where the food is.</span>
+					</div>
+				</div>
+		</div>
+		<div id="arrow-right" class="arrow"></div>
+
+	</div>
+<!--
 	<section id="showcase">
 		<div class="container">
-			<h2>Your diet is a bank account. Good fod choices are good investments.
+			<h2>Your diet is a bank account. Good food choices are good investments.
 			</h2>
 			
 		</div>
 	</section>
-
+-->
 	<section id="boxes">
 		<div class="container">
 			<div class="box">
@@ -83,5 +113,62 @@
 
 	<footer id="main-footer">
 		<p>Copyright &copy;2018 Dine Room</p>
+
+	<script>
+	let slideImages=document.querySelectorAll('.slide'),// to select many images
+		arrowLeft=document.querySelector('#arrow-left'),//to select one image
+		arrowRight=document.querySelector('#arrow-right'),
+		current=0;
+	//clears all images
+	function reset(){
+		for(let i=0;i<slideImages.length;i++)
+		{
+			slideImages[i].style.display='none'; // hides the other images
+		}
+	}
+		//initializes slide
+	function startSlide()
+	{
+		reset();
+		slideImages[0].style.display='block'; //this displays the first image
+	}
+
+	function slideLeft(){
+
+		reset();
+		slideImages[current-1].style.display='block'; //on left click moves to the image with index less than current by 1
+		current--;
+	}
+
+	function slideRight(){
+		reset();
+		slideImages[current+1].style.display='block';//moves to the next image 
+		current++;
+	}
+
+	//left arrow click event listener
+	arrowLeft.addEventListener('click',function(){
+		if(current===0) // if its in the first slide on click move to the last slide
+		{
+			current=slideImages.length;
+		}
+		slideLeft();
+	});
+
+	//right arrow click event listener
+	arrowRight.addEventListener('click',function(){
+		if(current===slideImages.length-1) //if its in the last image then move to the first image
+		{
+			current=-1
+
+		}
+		slideRight();
+	});
+
+
+	startSlide();
+	
+	</script>
+
 </body>
 </html>
